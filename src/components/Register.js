@@ -73,7 +73,7 @@ class Reg extends Component {
       <div className="app flex-row align-items-center"> 
       <Container>
       <Row className="justify-content-center">
-        <Col xs="6">
+        <Col xs="6" className="hide_class">
             <Card className="main-card">
                 <h2 className="main-text">Welcome</h2>
                 <h4><span className="span-text">Expect</span> More</h4>
