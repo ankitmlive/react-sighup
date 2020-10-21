@@ -1,3 +1,11 @@
+## React-SignUp
+
+## Screenshot
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/ankitmlive/react-sighup/main/public/Screen%20Shot%202020-10-21%20at%203.01.51%20PM.png" width="300">
+</div>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
