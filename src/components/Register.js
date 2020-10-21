@@ -114,40 +114,6 @@ class Reg extends Component {
         </Col>
       </Row>
       </Container>
- 
-        {/* <Container>  
-          <Row className="justify-content-center">  
-            <Col md="9" lg="7" xl="6">  
-              <Card className="mx-4">  
-                <CardBody className="p-4">  
-                  <Form>  
-                    <div class="row" className="mb-2 pageheading">  
-                      <div class="col-sm-12 btn btn-primary">  
-                        Sign Up  
-                        </div>  
-                    </div>  
-                    <InputGroup className="mb-3">  
-                      <Input type="text"  onChange={this.EmployeeName} placeholder="Enter Employee Name" />  
-                    </InputGroup>  
-                    <InputGroup className="mb-3">  
-                      <Input type="text"  onChange={this.Email} placeholder="Enter Email" />  
-                    </InputGroup>  
-                    <InputGroup className="mb-3">  
-                      <Input type="password"  onChange={this.Password} placeholder="Enter Password" />  
-                    </InputGroup>  
-                    <InputGroup className="mb-4">  
-                      <Input type="text"  onChange={this.City} placeholder="Enter City" />  
-                    </InputGroup>  
-                    <InputGroup className="mb-4">  
-                      <Input type="text"  onChange={this.Department} placeholder="Enter Department" />  
-                    </InputGroup>  
-                    <Button  onClick={this.register}  color="success" block>Create Account</Button>  
-                  </Form>  
-                </CardBody>  
-              </Card>  
-            </Col>  
-          </Row>  
-        </Container>   */}
       </div>  
     );  
   }  
