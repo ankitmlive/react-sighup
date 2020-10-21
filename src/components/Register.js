@@ -1,4 +1,6 @@
 import React, { Component } from 'react';  
+import axios from 'axios';
+import qs from 'qs'
 import { Button, Card, CardTitle, CardText, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';  
   
 class Reg extends Component {  
@@ -7,65 +9,66 @@ class Reg extends Component {
     super();  
   
     this.state = {  
-      Registration: '',  
-      Firstname: '',  
-      Lastname: '',  
-      Organization: '',  
-      Phone: ''  
+      registration: '',  
+      firstname: '',  
+      lastname: '',  
+      organization: '',  
+      phone: ''  
     }  
   
-    this.Firstname = this.Firstname.bind(this);  
-    this.Lastname = this.Lastname.bind(this);  
-    this.Registration = this.Registration.bind(this);  
-    this.Organization = this.Organization.bind(this);  
-    this.Phone = this.Phone.bind(this);  
+    this.firstname = this.firstname.bind(this);  
+    this.lastname = this.lastname.bind(this);  
+    this.registration = this.registration.bind(this);  
+    this.organization = this.organization.bind(this);  
+    this.phone = this.phone.bind(this);  
     this.register = this.register.bind(this);  
   }  
   
-  Organization(event) {  
-    this.setState({ Organization: event.target.value })  
+  organization(event) {  
+    this.setState({ organization: event.target.value })  
   }  
   
-  Firstname(event) {  
-    this.setState({ Firstname: event.target.value })  
+  firstname(event) {  
+    this.setState({ firstname: event.target.value })  
   }  
 
-  Registration(event) {  
-    this.setState({ Registration: event.target.value })  
+  registration(event) {  
+    this.setState({ registration: event.target.value })  
   }  
 
-  Lastname(event) {  
-    this.setState({ Lastname: event.target.value })  
+  lastname(event) {  
+    this.setState({ lastname: event.target.value })  
   }  
-  Phone(event) {  
-    this.setState({ Phone: event.target.value })  
+  phone(event) {  
+    this.setState({ phone: event.target.value })  
   }  
   
-  register(event) {  
-    fetch('http://localhost:8000/Api/register/', {  
-      method: 'post',  
-      headers: {  
-        'Accept': 'application/json',  
-        'Content-Type': 'application/json'  
-      },  
-      body: JSON.stringify({  
-        Firstname: this.state.Firstname,  
-        Lastname: this.state.Lastname,  
-        Organization: this.state.Organization,  
-        Phone: this.state.Phone,  
-        Registration: this.state.Registration  
-      })  
-    }).then((Response) => Response.json())  
-      .then((Result) => {  
-        if (Result.Status == 'Success')  
-                this.props.history.push("/Dashboard");  
-        else  
-          alert('Sorrrrrry !!!! Un-authenticated User !!!!!')  
-      })  
+  register(event) { 
+    const user = {
+      'firstname': this.state.firstname,  
+      'lastname': this.state.lastname,  
+      'organization': this.state.organization,  
+      'phone': this.state.phone,  
+      'registration': this.state.registration,
+      'password': '12346789' // only for testing
+    };
+    const options = {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: qs.stringify(user),
+      url: 'http://localhost:8000/api/v1/accounts/register/'
+    };
+    axios(options).then(res => {
+      console.log(res);
+      console.log(res.data);
+      alert("Successfully registered new user");
+    }).catch(error => {
+      console.log(error);
+      alert("Please fill all the fields");
+    });
   }  
   
   render() {  
-  
     return (  
       <div className="app flex-row align-items-center"> 
       <Container>
@@ -91,19 +94,19 @@ class Reg extends Component {
             </Row>
     
                     <InputGroup className="mb-3">  
-                      <Input type="text" bsSize="sm" className="app-input"  onChange={this.registration} placeholder="Registration No." />  
+                      <Input type="text" bsSize="sm" className="app-input" value={this.state.registration} onChange={this.registration} placeholder="Registration No." />  
                     </InputGroup>  
                     <InputGroup className="mb-3">  
-                      <Input type="text" bsSize="sm" className="app-input" onChange={this.firstname} placeholder="First Name" />  
+                      <Input type="text" bsSize="sm" className="app-input" value={this.state.firstname} onChange={this.firstname} placeholder="First Name" />  
                     </InputGroup>  
                     <InputGroup className="mb-3">  
-                      <Input type="password" bsSize="sm" className="app-input"  onChange={this.lastname} placeholder="Last name" />  
+                      <Input type="text" bsSize="sm" className="app-input" value={this.state.lastname}  onChange={this.lastname} placeholder="Last name" />  
                     </InputGroup>  
                     <InputGroup className="mb-4">  
-                      <Input type="text" bsSize="sm" className="app-input"  onChange={this.organigation} placeholder="Organization" />  
+                      <Input type="text" bsSize="sm" className="app-input" value={this.state.organization}  onChange={this.organization} placeholder="Organization" />  
                     </InputGroup>  
                     <InputGroup className="mb-4">  
-                      <Input type="text" bsSize="sm" className="app-input" onChange={this.phone} placeholder="Phone" />  
+                      <Input type="text" bsSize="sm" className="app-input" value={this.state.phone} onChange={this.phone} placeholder="Phone" />  
                     </InputGroup>  
                     <Button  onClick={this.register} className="app-input" color="warning" block>Next</Button> 
                     <Row className="justify-content-center">
