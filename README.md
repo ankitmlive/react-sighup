@@ -17,6 +17,11 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+### 'sign up page url'
+
+http://localhost:3000/Signup
+
 ## Warning :
 
 This app is only for demonstration, No validation or error-handling implemented yet.
+Only Sign-up page is working as per the requirements of assisgnments
