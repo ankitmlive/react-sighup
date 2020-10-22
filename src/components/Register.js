@@ -92,7 +92,6 @@ class Reg extends Component {
             <Row className="justify-content-center"> 
                 <h5 className="main-text-r">Create Account</h5>  
             </Row>
-    
                     <InputGroup className="mb-3">  
                       <Input type="text" bsSize="sm" className="app-input" value={this.state.registration} onChange={this.registration} placeholder="Registration No." />  
                     </InputGroup>  
